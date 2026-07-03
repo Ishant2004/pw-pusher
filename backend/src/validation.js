@@ -31,7 +31,11 @@ export const createSecretSchema = z.object({
     .min(EXPIRY.MIN_SECONDS, "Minimum expiry is 5 minutes")
     .max(EXPIRY.MAX_SECONDS, "Maximum expiry is 5 days")
     .default(EXPIRY.DEFAULT_SECONDS),
-  maxViews: z.number().int().min(1).max(1000).nullable().default(null),
+  maxViews: z.number().int().min(1).max(2).default(1),
 });
 
-export const tokenSchema = z.string().min(16).max(64).regex(/^[A-Za-z0-9_-]+$/, "Invalid token");
+// Tokens are exactly TOKEN_LENGTH base62 chars. Old long-format links aren't supported.
+export const tokenSchema = z
+  .string()
+  .length(SECRET.TOKEN_LENGTH)
+  .regex(/^[A-Za-z0-9]+$/, "Invalid token");

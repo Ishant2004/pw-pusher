@@ -7,7 +7,7 @@ export const EXPIRY = {
 
 export const SECRET = {
   MAX_CIPHERTEXT_B64: 200 * 1024, // ~140 KB of plaintext
-  TOKEN_LENGTH: 22, // length of the random URL token
+  TOKEN_LENGTH: 10, // short but unguessable (~59 bits) + login-gated + expiring
 };
 
 // One-time email codes (verification / password reset).

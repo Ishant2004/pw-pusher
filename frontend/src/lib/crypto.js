@@ -21,9 +21,10 @@ const fromB64url = (s) => {
   return t + "=".repeat((4 - (t.length % 4)) % 4);
 };
 
-// A fresh random 256-bit key, URL-safe base64 (this goes in the link fragment).
+// A fresh random 128-bit key, URL-safe base64 (this goes in the link fragment).
+// AES-128-GCM is still strong; a 16-byte key keeps the share link short.
 export function generateKey() {
-  const raw = new Uint8Array(32);
+  const raw = new Uint8Array(16);
   window.crypto.getRandomValues(raw);
   return toB64url(bytesToB64(raw));
 }

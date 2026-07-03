@@ -17,7 +17,7 @@ const EXPIRY_OPTIONS = [
   { label: "5 days", value: 5 * 24 * 60 * 60 },
 ];
 
-const VIEW_OPTIONS = [1, 2, 3, 4, 5];
+const VIEW_OPTIONS = [1, 2];
 
 export default function DashboardPage() {
   const [body, setBody] = useState("");
