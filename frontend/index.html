@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PW Pusher — share secrets safely</title>
+    <script>
+      // Apply the saved (or system) theme before render, to avoid a flash of the wrong colors.
+      (function () {
+        var saved = localStorage.getItem("theme");
+        var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+      })();
+    </script>
     <!-- Google Identity Services (for Google sign-in) -->
     <script src="https://accounts.google.com/gsi/client" async></script>
   </head>
